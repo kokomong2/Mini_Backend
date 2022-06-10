@@ -17,23 +17,22 @@ import javax.persistence.Id;
 public class Comment extends Timestamped {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "commentId")
+    @Column(name = "Commentid")
     private Long id;
 
     @Column(nullable = false)
-    private Long userId;
+    private Long userid;
 
     @Column(nullable = false)
-    private Long postId;
+    private Long postid;
 
     @Column(nullable = false)
     private String comment;
 
     @Column(nullable = false)
-    private String nickName;
+    private String nickname;
 
-    public Comment (CommentRequestDto commentRequestDto, Post post) {
-        this.comment = commentRequestDto.getComment();
+    public Comment (CommentRequestDto commentRequestDto, Post post) {this.comment = commentRequestDto.getComment();
     }
 
     public Long update(CommentRequestDto commentRequestDto) {
