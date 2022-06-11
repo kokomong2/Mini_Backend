@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @Getter @Setter
@@ -17,14 +14,11 @@ import javax.persistence.Id;
 public class Comment extends Timestamped {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Commentid")
+    @Column(name = "CommentId")
     private Long id;
 
     @Column(nullable = false)
     private Long userid;
-
-    @Column(nullable = false)
-    private Long postid;
 
     @Column(nullable = false)
     private String comment;
@@ -32,7 +26,12 @@ public class Comment extends Timestamped {
     @Column(nullable = false)
     private String nickname;
 
-    public Comment (CommentRequestDto commentRequestDto, Post post) {this.comment = commentRequestDto.getComment();
+    @ManyToOne
+    @JoinColumn(name = "postId, nullable = false") //Post 테이블의 Pk와 Join
+    private Post post;
+
+    public Comment (CommentRequestDto commentRequestDto, Post post) {
+        this.comment = commentRequestDto.getComment();
     }
 
     public Long update(CommentRequestDto commentRequestDto) {
