@@ -4,7 +4,6 @@ import com.kokomong.mini_backend.dto.CommentRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Entity;
 
 import javax.persistence.*;
 
@@ -18,7 +17,7 @@ public class Comment extends Timestamped {
     private Long id;
 
     @Column(nullable = false)
-    private Long userid;
+    private String username;
 
     @Column(nullable = false)
     private String comment;

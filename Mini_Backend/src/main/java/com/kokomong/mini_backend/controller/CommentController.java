@@ -12,7 +12,7 @@ public class CommentController {
     private final CommentService commentService; // 서비스 사용하기 위해 변수선언, 생성자는 어노테이션으로
 
     //댓글 작성
-    @PostMapping("/api/comments/{postId}")
+    @PostMapping("/api/comment/{postId}")
     public void createComment(@PathVariable Long postId, @RequestBody CommentRequestDto commentRequestDto) {
         commentService.createComment(postId, commentRequestDto);
     }
