@@ -9,15 +9,15 @@ import javax.persistence.*;
 
 @NoArgsConstructor
 @Getter @Setter
-//@Entity
+@Entity
 public class Comment extends Timestamped {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CommentId")
+    @Column(name = "commentId")
     private Long id;
 
     @Column(nullable = false)
-    private String username;
+    private Long userid;
 
     @Column(nullable = false)
     private String comment;
@@ -31,6 +31,7 @@ public class Comment extends Timestamped {
 
     public Comment (CommentRequestDto commentRequestDto, Post post) {
         this.comment = commentRequestDto.getComment();
+        this.post = post;
     }
 
     public Long update(CommentRequestDto commentRequestDto) {
