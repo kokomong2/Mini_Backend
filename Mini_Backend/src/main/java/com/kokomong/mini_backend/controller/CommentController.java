@@ -26,14 +26,14 @@ public class CommentController {
     }
 
     //댓글 삭제
-    @DeleteMapping("api/comment/{commentId}")
+    @DeleteMapping("/api/comment/{commentId}")
     public Long deleteComment(@PathVariable Long commentId) {
 
         return commentService.deleteComment(commentId);
     }
 
     //댓글 수정
-    @PutMapping("api/comment/{commentId}")
+    @PutMapping("/api/comment/{commentId}")
     public Long updateComment(@PathVariable Long commentId,
                               @RequestBody CommentRequestDto commentRequestDto) {
         return commentService.updateComment(commentId, commentRequestDto);
