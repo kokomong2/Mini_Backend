@@ -18,13 +18,17 @@ public class CommentController {
 
     //댓글 작성
     @PostMapping("/api/comment/{postId}")
-    public void createComment(@PathVariable Long postId, @RequestBody CommentRequestDto commentRequestDto) {
-        commentService.createComment(postId, commentRequestDto);
+    public Comment createComment(@PathVariable Long postId, @RequestBody CommentRequestDto commentRequestDto) {
+        Comment comment = commentService.createComment(postId, commentRequestDto);
+//        Comment comment = new Comment(postId, commentRequestDto);
+//        return commentRepository.save(comment);
+        return comment;
     }
 
     //댓글 삭제
     @DeleteMapping("api/comment/{commentId}")
     public Long deleteComment(@PathVariable Long commentId) {
+
         return commentService.deleteComment(commentId);
     }
 
@@ -37,6 +41,7 @@ public class CommentController {
 
     @GetMapping("/api/comment/{commentId}")
     public List<Comment> getComment() {
+
         return commentRepository.findAllByOrderByModifiedAtDesc();
     }
 
