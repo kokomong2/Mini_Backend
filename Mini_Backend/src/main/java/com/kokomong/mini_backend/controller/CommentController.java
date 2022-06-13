@@ -17,7 +17,7 @@ public class CommentController {
     private final CommentRepository commentRepository;
 
     //댓글 작성
-    @PostMapping("/api/comments/{postId}")
+    @PostMapping("/api/comment/{postId}")
     public void createComment(@PathVariable Long postId, @RequestBody CommentRequestDto commentRequestDto) {
         commentService.createComment(postId, commentRequestDto);
     }
