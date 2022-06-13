@@ -42,7 +42,7 @@ public class PostController {
     }
 
     //게시글 수정
-    @PutMapping("/api/detail/{postId}")
+    @PutMapping("/api/detail/update/{postId}")
     public Long updatePost(@PathVariable Long postId, @RequestBody PostRequestDto requestDto ) {
         postService.update(postId, requestDto);
         return postId;    //임시

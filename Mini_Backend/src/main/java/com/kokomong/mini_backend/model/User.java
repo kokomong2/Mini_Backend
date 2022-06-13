@@ -17,15 +17,19 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long userid;
+    private Long id;
 
     @Column(nullable = false, unique = true)
+    private String username;
+
+    @Column(nullable = false)
     private String nickname;
 
     @Column(nullable = false)
     private String password;
 
-    public User(String nickname, String password) {
+    public User(String username, String nickname, String password) {
+        this.username = username;
         this.nickname = nickname;
         this.password = password;
     }

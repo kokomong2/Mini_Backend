@@ -1,5 +1,6 @@
 package com.kokomong.mini_backend.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.kokomong.mini_backend.dto.PostRequestDto;
 import lombok.*;
 
@@ -26,7 +27,8 @@ public class Post extends Timestamped { //Entity class /
     @Column(nullable = false)
     private String text;    //내용
 
-    @OneToMany(mappedBy = "post", orphanRemoval = true)  //하나의 게시글에 여러개의 댓글 가질 수 있게
+    @JsonManagedReference
+    @OneToMany(mappedBy = "post", orphanRemoval = true)
     private List<Comment> comments;
 
 

@@ -1,13 +1,10 @@
 package com.kokomong.mini_backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.kokomong.mini_backend.dto.CommentRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-<<<<<<< HEAD
-=======
-
->>>>>>> 38ac6a16550dc0c4b234a5cca59e2cb00c1cfe12
 
 import javax.persistence.*;
 
@@ -29,8 +26,9 @@ public class Comment extends Timestamped {
     @Column(nullable = false)
     private String nickname;
 
+    @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "postId, nullable = false") //Post 테이블의 Pk와 Join
+    @JoinColumn(name = "POST_ID")
     private Post post;
 
     public Comment (CommentRequestDto commentRequestDto, Post post) {
