@@ -4,7 +4,7 @@ import com.kokomong.mini_backend.dto.CommentRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Entity;
+
 
 import javax.persistence.*;
 
