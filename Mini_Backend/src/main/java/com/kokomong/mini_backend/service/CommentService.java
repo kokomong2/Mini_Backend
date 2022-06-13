@@ -17,8 +17,8 @@ public class CommentService {
 
     //댓글 작성
     @Transactional
-    public void createComment(Long postid, CommentRequestDto commentsRequestDto) {
-        Post post = postRepository.findById(postid).orElseThrow(
+    public void createComment(Long postId, CommentRequestDto commentsRequestDto) {
+        Post post = postRepository.findById(postId).orElseThrow(
                 () -> new NullPointerException("해당 게시글이 존재하지 않습니다.")
         );
         Comment comment = new Comment(commentsRequestDto, post);
@@ -27,8 +27,8 @@ public class CommentService {
 
     //댓글 수정
     @Transactional
-    public Long updateComment(Long Commentid, CommentRequestDto commentRequestDto) {
-        Comment comment = commentRepository.findById(Commentid).orElseThrow(
+    public Long updateComment(Long commentId, CommentRequestDto commentRequestDto) {
+        Comment comment = commentRepository.findById(commentId).orElseThrow(
                 () -> new NullPointerException("해당 댓글이 존재하지 않습니다")
         );
         return comment.update(commentRequestDto);
@@ -38,8 +38,8 @@ public class CommentService {
 
 
     //댓글 삭제
-    public Long deleteComment(Long Commentid) {
-        commentRepository.deleteById(Commentid);
-        return Commentid;
+    public Long deleteComment(Long commentId) {
+        commentRepository.deleteById(commentId);
+        return commentId;
     }
 }

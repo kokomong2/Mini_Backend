@@ -14,11 +14,11 @@ import javax.persistence.*;
 public class Comment extends Timestamped {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "commentId")
-    private Long id;
+    @Column
+    private Long commentId;
 
     @Column(nullable = false)
-    private Long userid;
+    private String username;
 
     @Column(nullable = false)
     private String comment;
@@ -33,11 +33,13 @@ public class Comment extends Timestamped {
 
     public Comment (CommentRequestDto commentRequestDto, Post post) {
         this.comment = commentRequestDto.getComment();
+        this.username = commentRequestDto.getUsername();
+        this.nickname = commentRequestDto.getNickname();
         this.post = post;
     }
 
     public Long update(CommentRequestDto commentRequestDto) {
         this.comment = commentRequestDto.getComment();
-        return id;
+        return commentId;
     }
 }
