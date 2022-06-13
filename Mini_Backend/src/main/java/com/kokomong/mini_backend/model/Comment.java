@@ -4,6 +4,10 @@ import com.kokomong.mini_backend.dto.CommentRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 38ac6a16550dc0c4b234a5cca59e2cb00c1cfe12
 
 import javax.persistence.*;
 
