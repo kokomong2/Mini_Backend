@@ -15,3 +15,5 @@ public class PostRequestDto {   //게시글 생성과 수정을 처리할 요청
     private String img;     //이미지
     private String text;    //내용
 }
+
+

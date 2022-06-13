@@ -1,17 +1,16 @@
 package com.kokomong.mini_backend.model;
 
 import com.kokomong.mini_backend.dto.PostRequestDto;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
 @NoArgsConstructor
+@Data
+@AllArgsConstructor
 public class Post extends Timestamped { //Entity class /
 
     @Id
@@ -22,10 +21,15 @@ public class Post extends Timestamped { //Entity class /
     private String username;  // user fk
 
     @Column(nullable = false)
-    private String img; //이미지
+    private String img; //이미지 이름
 
     @Column(nullable = false)
     private String text;    //내용
+
+    @OneToMany(mappedBy = "post", orphanRemoval = true)  //하나의 게시글에 여러개의 댓글 가질 수 있게
+    private List<Comment> comments;
+
+
 
 
     //게시글 생성
