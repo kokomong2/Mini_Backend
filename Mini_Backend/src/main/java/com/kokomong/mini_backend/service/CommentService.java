@@ -17,12 +17,13 @@ public class CommentService {
 
     //댓글 작성
     @Transactional
-    public void createComment(Long postId, CommentRequestDto commentsRequestDto) {
-        Post post = postRepository.findById(postId).orElseThrow(
+    public Comment createComment(Long postId, CommentRequestDto commentsRequestDto) {
+        Post post = postRepository.findByPostId(postId).orElseThrow(
                 () -> new NullPointerException("해당 게시글이 존재하지 않습니다.")
         );
         Comment comment = new Comment(commentsRequestDto, post);
         commentRepository.save(comment);
+        return comment;
     }
 
     //댓글 수정
