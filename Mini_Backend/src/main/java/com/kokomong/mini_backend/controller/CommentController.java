@@ -40,9 +40,9 @@ public class CommentController {
     }
 
     @GetMapping("/api/comment/{postId}")
-    public List<Comment> getComment(@PathVariable Long postId) {
+    public List<CommentRequestDto> getComment(@PathVariable Long postId) {
 
-        return commentRepository.findAllByOrderByModifiedAtDesc();
+        return commentService.getComment(postId);
     }
 
 

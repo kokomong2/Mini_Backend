@@ -2,12 +2,14 @@ package com.kokomong.mini_backend.dto;
 
 import com.kokomong.mini_backend.model.Comment;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class CommentRequestDto {
     private LocalDateTime modifiedAt;
     private Long commentId;
@@ -20,5 +22,6 @@ public class CommentRequestDto {
         this.nickname = comment.getNickname();
         this.comment = comment.getComment();
         this.modifiedAt = comment.getModifiedAt();
+        this.username = comment.getUsername();
     }
 }
