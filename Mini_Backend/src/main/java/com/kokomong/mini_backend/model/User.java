@@ -28,9 +28,20 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(unique = true)
+    private Long kakaoId;
+
     public User(String username, String nickname, String password) {
         this.username = username;
         this.nickname = nickname;
         this.password = password;
+        this.kakaoId = null;
+    }
+
+    public User(String username, String nickname, String password, Long kakaoId) {
+        this.username = username;
+        this.nickname = nickname;
+        this.password = password;
+        this.kakaoId = kakaoId;
     }
 }

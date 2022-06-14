@@ -9,6 +9,7 @@ import com.kokomong.mini_backend.security.provider.FormLoginAuthProvider;
 import com.kokomong.mini_backend.security.provider.JWTAuthProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -65,9 +66,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers();
+                .antMatchers(HttpMethod.OPTIONS).permitAll() // preflight 대응
+                .antMatchers("/auth/**").permitAll(); // /auth/**에 대한 접근을 인증 절차 없이 허용(로그인 관련 url)
+        // 특정 권한을 가진 사용자만 접근을 허용해야 할 경우, 하기 항목을 통해 가능
 
-        // 서버에서 인증은 JWT로 인증하기 때문에 Session의 생성을 막습니다.
         http
                 .cors()
                 .and()
@@ -75,8 +77,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.headers().frameOptions().disable();
-/*
+        http.headers().frameOptions().sameOrigin();
+        /*
          * 1.
          * UsernamePasswordAuthenticationFilter 이전에 FormLoginFilter, JwtFilter 를 등록합니다.
          * FormLoginFilter : 로그인 인증을 실시합니다.
@@ -129,6 +131,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        skipPathList.add("POST,/h2-console/**");
         // 회원 관리 API 허용
         skipPathList.add("GET,/user/**");
+
+        skipPathList.add("GET,/oauth/**");
+        skipPathList.add("GET,/oauth/kakao/callback");
+        skipPathList.add("GET,/user/kakao/callback");
+
         skipPathList.add("POST,/api/signup");
         skipPathList.add("POST,/api/signup/checkid");
         skipPathList.add("POST,/api/login");
