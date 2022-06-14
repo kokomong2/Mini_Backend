@@ -17,7 +17,7 @@ public class PostService {
     @Transactional  //업데이트할때 이게 DB에 진짜 반영이 되어야해 라고 한번 더 말해주는 어노테이션 *업데이트에 필수
     public Long update(Long postId, PostRequestDto requestDto) {
         Post post = postRepository.findById(postId).orElseThrow(
-                () -> new NullPointerException("아이디가 존재하지 않습니다.")
+                () -> new NullPointerException("게시글 존재하지 않아")
         );
         post.updatePost(requestDto);
         return post.getPostId();

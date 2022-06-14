@@ -1,6 +1,7 @@
 package com.kokomong.mini_backend.controller;
 
 import com.kokomong.mini_backend.dto.PostRequestDto;
+import com.kokomong.mini_backend.dto.PostResponseDto;
 import com.kokomong.mini_backend.model.Post;
 import com.kokomong.mini_backend.repository.PostRepository;
 import com.kokomong.mini_backend.service.PostService;
@@ -27,7 +28,7 @@ public class PostController {
     }
 
     //게시글 목록 불러오기
-    @GetMapping("/api/post")
+    @GetMapping("/api/main")
     public List<Post> getPost() {
         return postRepository.findAllByOrderByModifiedAtDesc();
     }
