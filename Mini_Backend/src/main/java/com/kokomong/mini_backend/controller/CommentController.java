@@ -39,8 +39,8 @@ public class CommentController {
         return commentService.updateComment(commentId, commentRequestDto);
     }
 
-    @GetMapping("/api/comment/{commentId}")
-    public List<Comment> getComment() {
+    @GetMapping("/api/comment/{postId}")
+    public List<Comment> getComment(@PathVariable Long postId) {
 
         return commentRepository.findAllByOrderByModifiedAtDesc();
     }

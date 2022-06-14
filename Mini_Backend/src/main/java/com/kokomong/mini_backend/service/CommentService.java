@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CommentService {
@@ -25,6 +28,28 @@ public class CommentService {
         commentRepository.save(comment);
         return comment;
     }
+
+    //댓글 불러오기(id 기준으로)
+    public List<CommentRequestDto> getComment(Long postId) {
+
+        List<CommentRequestDto> commentRequestDtos = new ArrayList<>();
+
+        Post post = postRepository.findByPostId(postId).orElseThrow(
+                () -> new IllegalArgumentException("존재하지 않는 포스트입니다.")
+        );
+
+        List<Comment> comments = post.getComments();
+
+        for (Comment comment : comments) {
+            CommentRequestDto commentRequestDto = new CommentRequestDto(comment);
+            commentRequestDtos.add(commentRequestDto);
+        }
+
+        return commentRequestDtos;
+    }
+
+
+
 
     //댓글 수정
     @Transactional
