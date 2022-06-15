@@ -25,13 +25,15 @@ public class PostResponseDto {  //게시글 정보를 리턴할 응답Dto
 
     private String username;
 
-    private String nickname;
+    private String nickname;    //
+
+    //private LocalDateTime modifiedAt;   //
 
     public PostResponseDto(PostRequestDto postRequestDto, UserDetailsImpl userDetails) {
         this.text = postRequestDto.getText();
         this.img = postRequestDto.getImg();
         this.username = userDetails.getUsername();
-        this.nickname = userDetails.getUser().getNickname();
+        this.nickname = userDetails.getUser().getNickname();    //
     }
 }
 
