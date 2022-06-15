@@ -55,9 +55,10 @@ public class PostController {
 
     //게시글 수정
     @PutMapping("/api/detail/update/{postId}")
-    public Long updatePost(@PathVariable Long postId, @RequestBody PostRequestDto requestDto ) {
+    public Post updatePost(@PathVariable Long postId, @RequestBody PostRequestDto requestDto ) {
         postService.update(postId, requestDto);
-        return postId;    //임시
+        return postRepository.findByPostId(postId).orElseThrow(
+                ()->new IllegalArgumentException("포스트 아이디 없음"));
     }
 
     //게시글 삭제
