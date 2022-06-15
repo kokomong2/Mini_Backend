@@ -9,6 +9,7 @@ import com.kokomong.mini_backend.repository.PostRepository;
 import com.kokomong.mini_backend.security.UserDetailsImpl;
 import com.kokomong.mini_backend.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -40,8 +41,13 @@ public class PostController {
 
     //게시글 목록 불러오기
     @GetMapping("/api/main")
-    public List<Post> getPost() {
-        return postRepository.findAllByOrderByModifiedAtDesc();
+    public Page<Post> getPost(@RequestParam("page") int page,
+                              @RequestParam("size") int size,
+                              @RequestParam("sortBy") String sortBy,
+                              @RequestParam("isAsc") boolean isAsc) {
+
+        page = page-1;
+        return postService.getPosts(page,size,sortBy,isAsc);
     }
 
     // 게시글 상세 보기
