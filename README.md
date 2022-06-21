@@ -61,3 +61,6 @@ https://kaput-tv-e90.notion.site/8-SA-50f1b0349ea249d9baefe083fb466faa
 
 ### CSS
 * 반응형 화면 구성
+
+### 프론트 깃
+https://github.com/kordobby/mini_my_pet 
