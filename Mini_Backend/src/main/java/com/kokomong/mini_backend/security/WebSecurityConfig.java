@@ -27,7 +27,7 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity // 스프링 Security 지원을 가능하게 함
 @EnableGlobalMethodSecurity(securedEnabled = true) // @Secured 어노테이션 활성화
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {   //@ 내부에서 허용하는 것
 
     private final JWTAuthProvider jwtAuthProvider;
     private final HeaderTokenExtractor headerTokenExtractor;
@@ -100,7 +100,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .permitAll();
     }
 
-    @Bean
+    @Bean   // 로그인 할 수 있게 하는 form , 이거는 컨트롤러에서 안함 로그인하면 formLoginfilter로 감
     public FormLoginFilter formLoginFilter() throws Exception {
         FormLoginFilter formLoginFilter = new FormLoginFilter(authenticationManager());
         formLoginFilter.setFilterProcessesUrl("/api/login");

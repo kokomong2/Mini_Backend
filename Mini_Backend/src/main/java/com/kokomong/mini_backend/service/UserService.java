@@ -38,8 +38,8 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public boolean checkId(SignupRequestDto requestDto){
+    public boolean checkId(SignupRequestDto requestDto){ //아이디 중복 체크
         String username = requestDto.getUsername();
-        return (!userRepository.findByUsername(username).isPresent());
+        return (!userRepository.findByUsername(username).isPresent());  //user 이름과 같은게 있는지 리파지토리에서 찾아보고, isPresent() 이게 있냐 없냐를 확인, ! = 있으면 false, 없으면 true, // isPresent()  기본값은 true
     }
 }

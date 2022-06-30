@@ -20,7 +20,7 @@ import java.io.IOException;
  * Token 을 내려주는 Filter 가 아닌  client 에서 받아지는 Token 을 서버 사이드에서 검증하는 클레스 SecurityContextHolder 보관소에 해당
  * Token 값의 인증 상태를 보관 하고 필요할때 마다 인증 확인 후 권한 상태 확인 하는 기능
  */
-public class JwtAuthFilter extends AbstractAuthenticationProcessingFilter {
+public class JwtAuthFilter extends AbstractAuthenticationProcessingFilter { //제일 중요! 로그인 후에 일어나는 것/ 로그인 끝나고 나면 로그인 확인할때(로그인 했는지 안했는지 확인할때 필수로 거쳐가는 곳)
 
     private final HeaderTokenExtractor extractor;
 

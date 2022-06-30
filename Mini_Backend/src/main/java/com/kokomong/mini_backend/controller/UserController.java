@@ -35,7 +35,7 @@ UserController {
 
     }
 
-    @GetMapping("/api/auth")
+    @GetMapping("/api/auth") // 지금 로그인한 사람이 누군지 알려주는
     public UserResponseDto islogin(@AuthenticationPrincipal UserDetailsImpl userDetails) {
         User user = userDetails.getUser();
         System.out.println("username : " + user.getUsername());

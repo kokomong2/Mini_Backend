@@ -6,7 +6,7 @@ import com.kokomong.mini_backend.security.UserDetailsImpl;
 
 import java.util.Date;
 
-public final class JwtTokenUtils {
+public final class JwtTokenUtils {  //토큰 설정
 
     private static final int SEC = 1;
     private static final int MINUTE = 60 * SEC;

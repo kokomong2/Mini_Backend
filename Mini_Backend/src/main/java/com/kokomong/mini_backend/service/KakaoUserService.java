@@ -169,7 +169,7 @@ public class KakaoUserService {
 
         System.out.println("userDetails1 : " + userDetails1.toString());
 
-        final String token = JwtTokenUtils.generateJwtToken(userDetails1);
+        final String token = JwtTokenUtils.generateJwtToken(userDetails1); // 여기서 토큰을 자체적으로 생성할 수 있게 클래스 이용
 
         System.out.println("token값:" + token);
         response.addHeader("Authorization", "BEARER" + " " + token);
